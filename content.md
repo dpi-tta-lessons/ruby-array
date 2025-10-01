@@ -1,10 +1,10 @@
 # Ruby Array
 
-Store, organize, and manipulate lists of data.
+Work with lists of data in Ruby using the Array class.
 
 ## Goal
 
-By the end of this lesson you'll be able to create and manage lists of data using the `Array` class.
+By the end of this lesson, you'll be able to *create*, *add*, *retrieve*, and *use* data from arrays in Ruby.
 
 <div class="alert alert-info">
   <ul>
@@ -15,11 +15,17 @@ By the end of this lesson you'll be able to create and manage lists of data usin
 
 ## What is an Array?
 
-An array is a list of items. Think of an array as a container for other objects that can hold however many objects we want. The [Array class](https://docs.ruby-lang.org/en/master/Array.html) provides methods that help manage lists of items.
+An array is a list. Think of it like a row of boxes, each holding an item. You can add more boxes, take things out, and check what's inside.
 
-## Creating Arrays
+In Ruby, arrays can hold any type of object—numbers, strings, even other arrays.
 
-You can create an array using an initializer `new`"
+<aside class="tip">
+  Arrays are one of the most common data structures in programming, you'll use them almost everywhere.
+</aside>
+
+## Create an Empty Array
+
+We can create a new empty array with `Array.new`:
 
 ```ruby
 foods = Array.new
@@ -28,11 +34,13 @@ pp foods
 ```
 {: .repl }
 
-## Array Methods
+<aside class="tip">
+  Ruby represents an Array with square brackets, <code>[]</code>.
+</aside>
 
-### `push`
+## Add Items with `push`
 
-Ruby represents an Array with square brackets, `[]`. How can we add elements to an empty array? We can use the `push` method.
+Let's put some foods into our array using [push](https://docs.ruby-lang.org/en/master/Array.html#method-i-push):
 
 ```ruby
 foods = Array.new
@@ -47,9 +55,9 @@ pp foods
   Try adding more food items to the <code>foods</code> array using the <code>push</code> method.
 </aside>
 
-## Array Literals
+## Shortcut with Array Literals
 
-There's a shortcut to creating Arrays. We don't have to instantiate the Array class every time with Array.new and build it from scratch with the .push method. We can type an array "literal" directly into the code:
+Instead of using `Array.new` + `push`, we can write arrays directly with square brackets. We can type an array "literal" directly into the code:
 
 ```ruby
 foods = ["Pizza", "Sushi", "Pineapple"]
@@ -57,51 +65,33 @@ pp foods
 ```
 {: .repl }
 
-What will the output of the above snippet be?
+### Get Items with `at` or `[]`
 
-### `at`
-
-`push` lets us add elements to our array list. The next thing we need to be able to do is to retrieve an element from the list we've created. We can use .at to do this.
+We can grab items by their position (index). Ruby starts counting at 0.
 
 ```ruby
 foods = ["Pizza", "Sushi", "Pineapple", "Curry", "Sandwich"]
 
-pp foods.at(-2)
+pp foods.at(0)   # First item
+pp foods.at(2)   # Third item
+pp foods.at(-1)  # Last item
 ```
 {: .repl }
 
-What will the output of the above snippet be?
- 
-The `at` method will take an `Integer` argument which is interpreted as the position or index in the `Array` of the element that you want to retrieve.
-
-### `at` shorthand, `[]`
-
-You can substitute the `at` method with square brackets `[]`
-
-What will the output of the above snippet be?
+Syntax Sugar: use square brackets `[]` instead of `at`.
 
 ```ruby
 foods = ["Pizza", "Sushi", "Pineapple", "Curry", "Sandwich"]
 
-pp foods.[](2)
+pp foods[0]   # "Pizza"
+pp foods[2]   # "Pineapple"
+pp foods[-2]  # "Curry"
 ```
 {: .repl }
-
-What will the output of the snippet be?
-
-Syntactic sugar:
-
-```ruby
-foods = ["Pizza", "Sushi", "Pineapple", "Curry", "Sandwich"]
-
-pp foods[2]
-```
-{: .repl }
-
 
 ## `first` and `last`
 
-What will the output of the snippet be?
+Ruby has shortcuts to grab the first or last item:
 
 ```ruby
 foods = ["Pizza", "Sushi", "Pineapple", "Curry", "Sandwich"]
@@ -113,6 +103,8 @@ pp foods.last
 
 ## `count`
 
+How many items are in an array?
+
 ```ruby
 a = [8, 3, 1, 19, 23, 3]
 
@@ -122,11 +114,9 @@ pp a.count(3)
 ```
 {: .repl }
 
-What will the output of the above code snippet be?
+## Random Items with `sample`
 
-## `sample`
-
-What will the output of the code snippet be?
+Pick a random element from an array. Each time you run it, you may get a different result.
 
 ```ruby
 an_array = [8, 3, 1, 19, 23, 3]
@@ -137,7 +127,7 @@ pp an_array.sample
 
 ## `min`, `max`, and `sum`
 
-What will the output of the code snippet be?
+Ruby can do simple math on arrays of numbers:
 
 ```ruby
 a = [8, 3, 1, 19, 23, 3]
@@ -148,7 +138,23 @@ pp a.sum
 ```
 {: .repl }
 
-## Project: I/O
+## Quiz
+
+```ruby
+foods = ["Pizza", "Sushi", "Curry"]
+pp foods.at(1)
+```
+
+- What does this code print?
+- "Pizza"
+  - Not correct. Remember, arrays start at index 0.
+- "Sushi"
+  - Correct! Index 1 is the second item.
+- "Curry"
+  - Not correct. That's index 2.
+{: .choose_best #array_index title="Array Indexing" answer="2"}
+
+## Project: Array
 
 In this project, you will write Ruby programs that leverage these Array methods. This project includes automated tests, so click this link to get started <https://github.com/dpi-tta-projects/ruby-array/fork>, fork the repository and create a codespace.
 
